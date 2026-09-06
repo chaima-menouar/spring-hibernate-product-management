@@ -1,31 +1,45 @@
+<div align="center">
+
 # Spring Hibernate Product Management
 
-A Java web application for managing products with a classic layered architecture built with **Spring MVC**, **Hibernate ORM**, **JSP**, and **MySQL**.
+### Classic layered Java web application for product CRUD
+
+**Spring MVC · Hibernate ORM · JSP · MySQL · Maven · WAR deployment**
+
+![Java](https://img.shields.io/badge/Java-8-ED8B00?logo=openjdk&logoColor=white)
+![Spring](https://img.shields.io/badge/Spring%20MVC-5.3-6DB33F?logo=spring&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Persistence-4479A1?logo=mysql&logoColor=white)
+
+</div>
+
+A Java web application for managing products using a classic layered architecture built with **Spring MVC, Hibernate ORM, JSP and MySQL**.
+
+The project is kept as an educational example of MVC/service/DAO separation and ORM fundamentals.
 
 ## Architecture
 
-![Application architecture](docs/architecture.svg)
+![Application architecture](docs/architecture-modern.svg)
 
-The application follows a simple MVC/service/DAO separation:
+```text
+Browser → JSP → Spring MVC Controller → Service → DAO → Hibernate → MySQL
+```
 
-- JSP pages render the product interface;
-- `HomeController` handles web requests;
-- `ProduitService` contains the service layer;
-- `ProduitDao` manages persistence operations;
-- Hibernate maps the `Produit` entity to MySQL.
+## Layer responsibilities
+
+| Layer | Main component | Responsibility |
+|---|---|---|
+| Presentation | JSP / JSTL | Product interface and forms |
+| Controller | `HomeController` | HTTP request handling |
+| Service | `ProduitService` | Business/service boundary |
+| DAO | `ProduitDao` | Persistence operations |
+| ORM | Hibernate | Entity-to-table mapping |
+| Database | MySQL | Product persistence |
 
 ## Technology stack
 
-- Java 8
-- Spring MVC 5.3
-- Spring ORM
-- Hibernate 5.6
-- MySQL Connector/J
-- JSP / JSTL
-- Maven
-- Java Servlet API
+`Java 8` · `Spring MVC 5.3` · `Spring ORM` · `Hibernate 5.6` · `MySQL Connector/J` · `JSP/JSTL` · `Maven` · `Servlet API`
 
-## Main project structure
+## Project structure
 
 ```text
 src/main/java/
@@ -50,52 +64,40 @@ src/main/webapp/
     └── web.xml
 ```
 
-## Application flow
-
-```text
-Browser
-  -> JSP view
-  -> Spring MVC controller
-  -> service layer
-  -> DAO
-  -> Hibernate
-  -> MySQL
-```
-
 ## Build
 
-The project is packaged as a WAR file.
+The project is packaged as a WAR archive.
 
 ```bash
 mvn clean package
 ```
 
-The generated application archive is created under `target/`.
+Output is generated under `target/`.
 
-## Configuration
+## Database configuration
 
-Database persistence is configured in:
+Persistence configuration is located in:
 
 ```text
 src/main/resources/hibernate.cfg.xml
 ```
 
-Before running the project, configure the local MySQL connection values for your own environment. Do not commit real database passwords or production credentials.
+Configure local MySQL values for your own environment and never commit real database passwords or production credentials.
 
 ## Learning objectives
 
-This project demonstrates:
+This repository demonstrates:
 
 - layered Java web architecture;
 - Spring MVC request handling;
 - service and DAO separation;
 - Hibernate object-relational mapping;
 - JSP-based server-side views;
-- Maven dependency and WAR packaging.
+- Maven dependency management and WAR packaging.
 
 ## Academic context
 
-The repository also contains the original `TP6_j2EE.pdf` assignment document. The application is kept as an educational J2EE/Spring/Hibernate project and should be evaluated in that context rather than as a modern production Spring Boot system.
+The repository contains the original `TP6_j2EE.pdf` assignment. It should be evaluated as an educational J2EE/Spring/Hibernate project rather than a modern Spring Boot production system.
 
 ## Author
 
